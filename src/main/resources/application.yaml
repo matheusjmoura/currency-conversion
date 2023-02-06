@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:conversion;DB_CLOSE_DELAY=-1
+    driverClassName: org.h2.Driver
+    username: root
+    password: ''
+  r2dbc:
+    url: r2dbc:h2:mem:///conversion
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+  flyway:
+    enabled: true
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+  h2:
+    console:
+      enabled: true
+      port: 8082
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+
+exchange-rates:
+  api:
+    key: 7vJl4SuNYx2VqfhE89QhnuBnklXeP6qj
+    url: https://api.apilayer.com/exchangerates_data/latest
+    cache:
+      expire-time: 10 # in hours. Default is 12h
