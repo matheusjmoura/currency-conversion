@@ -13,24 +13,24 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.UUID;
 
-
 @Getter
-@Table(name = "\"user\"")
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "\"user\"")
 @Schema(description = "User Entity")
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class User {
 
     @Id
-    @Schema(description = "ID of the user", example = "a96c7f4d-760d-416a-9828-5c57ed0fb888")
     private UUID id;
-    @Schema(description = "Name of the user", example = "Matheus Moura")
     private String name;
     @Version
     Long version;
 
     public static User from(@NonNull CreateUserRequest request) {
-        return new User(UUID.randomUUID(), request.getName(), null);
+        return new User(
+            UUID.randomUUID(),
+            request.getName(),
+            null);
     }
 
 }

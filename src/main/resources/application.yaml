@@ -21,6 +21,12 @@ spring:
       settings:
         trace: false
         web-allow-others: false
+#  redis:
+#    database: 0
+#    host: localhost
+#    port: 16379
+#    password: ${spring.datasource.password}
+#    timeout: 60000
 
 exchange-rates:
   api:

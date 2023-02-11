@@ -1,4 +1,4 @@
-package com.matheusjmoura.currencyconversion.application.common.response;
+package com.matheusjmoura.currencyconversion.application.common;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;

@@ -18,7 +18,7 @@ public class CreateUserRequest {
 
     @NotBlank(message = "{user.name.notBlank}")
     @Size(min = 5, max = 255, message = "{user.name.size}")
-    @Schema(description = "User's name", example = "Matheus Moura", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(description = "User name", example = "Matheus Moura", requiredMode = Schema.RequiredMode.REQUIRED)
     private String name;
 
 }

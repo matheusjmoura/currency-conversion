@@ -5,7 +5,7 @@ import com.matheusjmoura.currencyconversion.exception.common.BusinessException;
 public class UserAlreadyExistException extends BusinessException {
 
     public UserAlreadyExistException(Object... args) {
-        super("user.exception.exist", args);
+        super("user.exist.exception", args);
     }
 
 }

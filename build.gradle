@@ -19,21 +19,23 @@ repositories {
 }
 
 dependencies {
+    //    Spring Suite
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'io.projectreactor:reactor-test'
 
-    //    Database
-    implementation 'org.flywaydb:flyway-core'
+    //    Database Management
     implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
     implementation 'me.yaman.can:spring-boot-webflux-h2-console:0.0.1'
+    implementation 'org.flywaydb:flyway-core'
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'io.r2dbc:r2dbc-h2'
-    runtimeOnly 'org.postgresql:postgresql'
-    runtimeOnly 'org.postgresql:r2dbc-postgresql'
 
-    //    Swagger 3 (OpenAPI 3)
+    //    Redis Reactive - Cache
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
+
+    //    Swagger 3 (OpenAPI 3) - API Documentation
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.14'
     implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.6.14'
     implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.14'
