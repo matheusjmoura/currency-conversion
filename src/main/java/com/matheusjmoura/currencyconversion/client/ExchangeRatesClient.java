@@ -3,6 +3,7 @@ package com.matheusjmoura.currencyconversion.client;
 import com.matheusjmoura.currencyconversion.client.response.ExchangeRatesClientResponse;
 import com.matheusjmoura.currencyconversion.client.response.ExchangeRatesErrorResponse;
 import com.matheusjmoura.currencyconversion.exception.ExchangeRatesClientException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+@Slf4j
 @Component
 public class ExchangeRatesClient {
 
@@ -34,7 +36,8 @@ public class ExchangeRatesClient {
             .headers(getHeaders())
             .retrieve()
             .onStatus(HttpStatus::isError, errorHandler())
-            .bodyToMono(ExchangeRatesClientResponse.class);
+            .bodyToMono(ExchangeRatesClientResponse.class)
+            .doOnSuccess(exchangeRatesClientResponse -> log.info("Successfully retrieved exchange rates from Exchange Rates Data API."));
     }
 
     private UriComponentsBuilder getEuroBasedExchangeRatesUrl() {
