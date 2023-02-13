@@ -9,12 +9,10 @@ import org.springframework.context.NoSuchMessageException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.support.WebExchangeBindException;
 
-import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -24,20 +22,17 @@ public class GlobalExceptionHandler {
 
     private final MessageSource messageSource;
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorAttributes> handleValidationErrors(MethodArgumentNotValidException exception, Locale locale) {
+    @ExceptionHandler(WebExchangeBindException.class)
+    public ResponseEntity<ErrorAttributes> handleValidationErrors(WebExchangeBindException exception, Locale locale) {
         ErrorAttributes errorAttributes = new ErrorAttributes(messageSource.getMessage("validation.exception.title", null, locale));
-        List<ObjectError> errors = exception.getBindingResult().getAllErrors();
-        for (ObjectError error : errors) {
+        exception.getBindingResult().getAllErrors().forEach(error -> {
             if (error instanceof FieldError) {
-                FieldError fieldError = (FieldError) error;
-                String message = messageSource.getMessage(Objects.requireNonNull(fieldError.getCode()), fieldError.getArguments(),
-                    fieldError.getDefaultMessage(), locale);
-                errorAttributes.addDetail(String.format("%s: %s", fieldError.getField(), message));
+                errorAttributes.addDetail(String.format("%s: %s", ((FieldError) error).getField(),
+                    messageSource.getMessage(Objects.requireNonNull(error.getCode()), error.getArguments(), error.getDefaultMessage(), locale)));
             } else {
                 errorAttributes.addDetail(messageSource.getMessage(Objects.requireNonNull(error.getCode()), error.getArguments(), locale));
             }
-        }
+        });
         return new ResponseEntity<>(errorAttributes, HttpStatus.BAD_REQUEST);
     }
 
