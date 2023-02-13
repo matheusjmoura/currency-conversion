@@ -21,7 +21,7 @@ public class ApiPageResponse<T> {
     private int pageSize;
     @Schema(description = "Zero-based page index (0..N)", example = "0")
     private int pageNumber;
-    @Schema(description = "Total amount of elements spanning all pages", example = "100")
+    @Schema(description = "Total amount of elements spanning all pages", example = "1")
     private long totalElements;
     @Schema(description = "Current page content as List")
     private Collection<T> content = new ArrayList<>();

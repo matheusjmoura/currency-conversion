@@ -38,10 +38,10 @@ public class ExchangeService {
     }
 
     public Mono<Page<ExchangeResponse>> getAllByUserID(UUID userId, Pageable pageable) {
-        return exchangeRepository.findAllByAndUserId(pageable, userId)
-            .collectList()
+        return userService.getById(userId)
+            .flatMap(user -> exchangeRepository.findAllByAndUserId(pageable, user.getId()).collectList())
             .map(exchangeList -> exchangeList.stream().map(ExchangeResponse::from).collect(Collectors.toList()))
-            .zipWith(exchangeRepository.count())
+            .zipWith(exchangeRepository.findAllByUserId(userId).count())
             .map(tuple -> new PageImpl<>(tuple.getT1(), pageable, tuple.getT2()));
     }
 

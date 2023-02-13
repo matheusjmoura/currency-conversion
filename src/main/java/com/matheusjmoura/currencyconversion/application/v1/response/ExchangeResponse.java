@@ -1,5 +1,7 @@
 package com.matheusjmoura.currencyconversion.application.v1.response;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.matheusjmoura.currencyconversion.domain.Exchange;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -24,12 +26,13 @@ public class ExchangeResponse {
     private BigDecimal originValue;
     @Schema(description = "Destiny currency", example = "BRL")
     private String destinyCurrency;
-    @Schema(description = "Destiny value", example = "0.14")
+    @Schema(description = "Destiny value", example = "0.140096")
     private BigDecimal destinyValue;
     @Schema(description = "Exchange tax rate", example = "0.140096")
     private BigDecimal taxRate;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @Schema(description = "Exchange date time", example = "2023-02-06T00:53:10.2673878")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @Schema(description = "Exchange date time", example = "2023-02-10T13:15:20.4755491")
     private LocalDateTime dateTime;
 
     public static ExchangeResponse from(Exchange exchange) {

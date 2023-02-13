@@ -13,4 +13,6 @@ public interface ExchangeRepository extends ReactiveSortingRepository<Exchange, 
 
     Flux<Exchange> findAllByAndUserId(Pageable pageable, UUID userId);
 
+    Flux<Exchange> findAllByUserId(UUID userId);
+
 }

@@ -3,9 +3,12 @@ package com.matheusjmoura.currencyconversion.application.v1;
 import com.matheusjmoura.currencyconversion.application.common.ApiPageResponse;
 import com.matheusjmoura.currencyconversion.application.v1.request.ExchangeRequest;
 import com.matheusjmoura.currencyconversion.application.v1.response.ExchangeResponse;
+import com.matheusjmoura.currencyconversion.exception.common.ErrorAttributes;
 import com.matheusjmoura.currencyconversion.service.ExchangeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -37,7 +40,13 @@ public class ExchangeController {
     @PostMapping
     @Operation(summary = "Make an exchange operation between two different currencies")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Successful exchange operation")
+        @ApiResponse(responseCode = "200", description = "Successful exchange operation"),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = {@Content(mediaType = "application/json",
+            schema = @Schema(implementation = ErrorAttributes.class))}),
+        @ApiResponse(responseCode = "404", description = "Not Found", content = {@Content(mediaType = "application/json",
+            schema = @Schema(implementation = ErrorAttributes.class))}),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {@Content(mediaType = "application/json",
+            schema = @Schema(implementation = ErrorAttributes.class))})
     })
     public Mono<ResponseEntity<ExchangeResponse>> exchange(@RequestBody @Valid ExchangeRequest exchangeRequest) {
         log.info("Receiving request to exchange two currencies. Request: {}.", exchangeRequest);
@@ -49,7 +58,13 @@ public class ExchangeController {
     @GetMapping("/user/{userId}")
     @Operation(summary = "Get all exchange operations by user ID using pagination")
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "Exchanges retrieved")
+        @ApiResponse(responseCode = "200", description = "Exchanges retrieved"),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = {@Content(mediaType = "application/json",
+            schema = @Schema(implementation = ErrorAttributes.class))}),
+        @ApiResponse(responseCode = "404", description = "Not Found", content = {@Content(mediaType = "application/json",
+            schema = @Schema(implementation = ErrorAttributes.class))}),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {@Content(mediaType = "application/json",
+            schema = @Schema(implementation = ErrorAttributes.class))})
     })
     public Mono<ResponseEntity<ApiPageResponse<ExchangeResponse>>> getAllByUserId(
         @Parameter(name = "userId", description = "User ID", example = "a96c7f4d-760d-416a-9828-5c57ed0fb888")
