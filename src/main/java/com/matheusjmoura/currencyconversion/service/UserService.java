@@ -1,6 +1,6 @@
 package com.matheusjmoura.currencyconversion.service;
 
-import com.matheusjmoura.currencyconversion.application.v1.request.CreateUserRequest;
+import com.matheusjmoura.currencyconversion.application.v1.request.UserRequest;
 import com.matheusjmoura.currencyconversion.application.v1.response.UserResponse;
 import com.matheusjmoura.currencyconversion.domain.User;
 import com.matheusjmoura.currencyconversion.exception.UserAlreadyExistException;
@@ -20,7 +20,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public Mono<UserResponse> create(CreateUserRequest request) {
+    public Mono<UserResponse> create(UserRequest request) {
         return userRepository.existsByName(request.getName())
             .filter(Boolean.FALSE::equals)
             .switchIfEmpty(Mono.error(() -> new UserAlreadyExistException(request.getName())))

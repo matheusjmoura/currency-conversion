@@ -31,6 +31,6 @@ logging:
 exchange-rates:
   api:
     key: 7vJl4SuNYx2VqfhE89QhnuBnklXeP6qj
-    url: https://api.apilayer.com/exchangerates_data/latest
+    url: https://api.apilayer.com
     cache:
-      expire-time: 10 # in hours. Default is 12h
+      ttl: 5 # in hours. Minimum and default value is 3h (It will be overwritten if the typed value is less than 3)

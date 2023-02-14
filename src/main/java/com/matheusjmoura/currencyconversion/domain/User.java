@@ -1,6 +1,6 @@
 package com.matheusjmoura.currencyconversion.domain;
 
-import com.matheusjmoura.currencyconversion.application.v1.request.CreateUserRequest;
+import com.matheusjmoura.currencyconversion.application.v1.request.UserRequest;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -26,7 +26,7 @@ public class User {
     @Version
     Long version;
 
-    public static User from(@NonNull CreateUserRequest request) {
+    public static User from(@NonNull UserRequest request) {
         return new User(
             UUID.randomUUID(),
             request.getName(),

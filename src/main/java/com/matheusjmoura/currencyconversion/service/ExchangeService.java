@@ -18,8 +18,6 @@ import java.math.RoundingMode;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static com.matheusjmoura.currencyconversion.service.ExchangeRatesCacheService.EXCHANGE_RATES_CACHE_KEY;
-
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -39,9 +37,9 @@ public class ExchangeService {
 
     public Mono<Page<ExchangeResponse>> getAllByUserID(UUID userId, Pageable pageable) {
         return userService.getById(userId)
-            .flatMap(user -> exchangeRepository.findAllByAndUserId(pageable, user.getId()).collectList())
-            .map(exchangeList -> exchangeList.stream().map(ExchangeResponse::from).collect(Collectors.toList()))
-            .zipWith(exchangeRepository.findAllByUserId(userId).count())
+            .flatMap(user -> exchangeRepository.findAllByAndUserId(pageable, user.getId()).collectList()
+                .map(exchangeList -> exchangeList.stream().map(ExchangeResponse::from).collect(Collectors.toList()))
+                .zipWith(exchangeRepository.countAllByUserId(userId)))
             .map(tuple -> new PageImpl<>(tuple.getT1(), pageable, tuple.getT2()));
     }
 
@@ -50,12 +48,11 @@ public class ExchangeService {
             .filter(request -> Boolean.FALSE.equals(request.isSameCurrency()))
             .switchIfEmpty(Mono.error(() -> new IdenticalCurrencyExchangeException(exchangeRequest.getOriginCurrency())))
             .doOnError(throwable -> log.error("Error exchanging two identical currencies. User ID: " + exchangeRequest.getUserId() +
-                " - Currency: " + exchangeRequest.getOriginCurrency(), throwable))
-            .thenReturn(exchangeRequest);
+                " - Currency: " + exchangeRequest.getOriginCurrency(), throwable));
     }
 
     private Mono<BigDecimal> calculateTaxRate(String originCurrency, String destinyCurrency) {
-        return Mono.fromFuture(exchangeRatesCacheService.getCache().get(EXCHANGE_RATES_CACHE_KEY))
+        return exchangeRatesCacheService.getExchangeRatesCache()
             .map(exchangeRates -> exchangeRates.get(destinyCurrency)
                 .divide(exchangeRates.get(originCurrency), 6, RoundingMode.HALF_EVEN));
     }

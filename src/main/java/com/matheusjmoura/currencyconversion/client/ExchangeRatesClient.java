@@ -21,7 +21,7 @@ import java.util.function.Function;
 @Component
 public class ExchangeRatesClient {
 
-    public static final String EURO_BASE_CURRENCY = "EUR";
+    private static final String EURO_BASE_CURRENCY = "EUR";
 
     private final WebClient webClient = WebClient.create();
 
@@ -42,6 +42,7 @@ public class ExchangeRatesClient {
 
     private UriComponentsBuilder getEuroBasedExchangeRatesUrl() {
         return UriComponentsBuilder.fromUriString(baseUrl)
+            .pathSegment("exchangerates_data", "latest")
             .queryParam("base", EURO_BASE_CURRENCY);
     }
 

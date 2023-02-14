@@ -6,6 +6,7 @@ import com.matheusjmoura.currencyconversion.domain.Exchange;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
+@ToString
 @AllArgsConstructor
 public class ExchangeResponse {
 

@@ -18,7 +18,6 @@ repositories {
     mavenCentral()
 }
 
-
 dependencies {
     //    Spring Suite
     implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -33,7 +32,7 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'io.r2dbc:r2dbc-h2'
 
-    //    Caffeine - Cache
+    //    Caffeine - In-Memory Cache
     implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation 'com.github.ben-manes.caffeine:caffeine'
 
@@ -42,10 +41,14 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.6.14'
     implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.14'
 
-    //    Lombok - Java annotation library
+    //    Lombok - Java Annotation Library
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    //    WireMock - API Mocking
+    testImplementation "com.github.tomakehurst:wiremock-jre8:2.35.0"
 }
+
 tasks.named('test') {
     useJUnitPlatform()
 }

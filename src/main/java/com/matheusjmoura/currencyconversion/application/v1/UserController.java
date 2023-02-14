@@ -1,6 +1,6 @@
 package com.matheusjmoura.currencyconversion.application.v1;
 
-import com.matheusjmoura.currencyconversion.application.v1.request.CreateUserRequest;
+import com.matheusjmoura.currencyconversion.application.v1.request.UserRequest;
 import com.matheusjmoura.currencyconversion.application.v1.response.UserResponse;
 import com.matheusjmoura.currencyconversion.exception.common.ErrorAttributes;
 import com.matheusjmoura.currencyconversion.service.UserService;
@@ -41,7 +41,7 @@ public class UserController {
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {@Content(mediaType = "application/json",
             schema = @Schema(implementation = ErrorAttributes.class))})
     })
-    public Mono<ResponseEntity<UserResponse>> create(@RequestBody @Valid CreateUserRequest request) {
+    public Mono<ResponseEntity<UserResponse>> create(@RequestBody @Valid UserRequest request) {
         log.info("Receiving request to create new user. Request: {}.", request);
 
         return userService.create(request)

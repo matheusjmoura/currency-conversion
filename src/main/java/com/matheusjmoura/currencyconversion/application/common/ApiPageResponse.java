@@ -2,18 +2,14 @@ package com.matheusjmoura.currencyconversion.application.common;
 
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Page;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ApiPageResponse<T> {
 
     @Schema(description = "Indicates if there is a next content page", example = "true")
@@ -25,11 +21,11 @@ public class ApiPageResponse<T> {
     @Schema(description = "Total amount of elements spanning all pages", example = "1")
     private long totalElements;
     @ArraySchema(schema = @Schema(description = "Current page content as List"))
-    private Collection<T> content = new ArrayList<>();
+    private Collection<T> content;
 
     public static <T> ApiPageResponse<T> from(Page<T> page) {
         return new ApiPageResponse<>(
-            !page.isLast(),
+            page.hasNext(),
             page.getSize(),
             page.getNumber(),
             page.getTotalElements(),

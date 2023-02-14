@@ -4,12 +4,10 @@ import com.matheusjmoura.currencyconversion.domain.User;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.ToString;
 
 import java.util.UUID;
 
 @Getter
-@ToString
 @AllArgsConstructor
 public class UserResponse {
 

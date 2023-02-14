@@ -1,0 +1,197 @@
+package com.matheusjmoura.currencyconversion.stubs;
+
+import com.matheusjmoura.currencyconversion.client.response.ExchangeRatesClientResponse;
+
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+
+public class ExchangeRatesClientResponseStub {
+
+    public static ExchangeRatesClientResponse create() {
+        return new ExchangeRatesClientResponse(
+            true,
+            Timestamp.valueOf(LocalDateTime.of(2023, 2, 10, 13, 15, 20)).getTime(),
+            "EUR",
+            "2023-02-10",
+            getRates()
+        );
+    }
+
+    private static HashMap<String, BigDecimal> getRates() {
+        HashMap<String, BigDecimal> hashMap = new HashMap<>();
+        hashMap.put("AED", BigDecimal.valueOf(3.949265));
+        hashMap.put("AFN", BigDecimal.valueOf(96.133146));
+        hashMap.put("ALL", BigDecimal.valueOf(115.871133));
+        hashMap.put("AMD", BigDecimal.valueOf(423.744531));
+        hashMap.put("ANG", BigDecimal.valueOf(1.937456));
+        hashMap.put("AOA", BigDecimal.valueOf(542.248351));
+        hashMap.put("ARS", BigDecimal.valueOf(206.476091));
+        hashMap.put("AUD", BigDecimal.valueOf(1.542766));
+        hashMap.put("AWG", BigDecimal.valueOf(1.93538));
+        hashMap.put("AZN", BigDecimal.valueOf(1.823009));
+        hashMap.put("BAM", BigDecimal.valueOf(1.954777));
+        hashMap.put("BBD", BigDecimal.valueOf(2.170431));
+        hashMap.put("BDT", BigDecimal.valueOf(115.183112));
+        hashMap.put("BGN", BigDecimal.valueOf(1.959725));
+        hashMap.put("BHD", BigDecimal.valueOf(0.40524));
+        hashMap.put("BIF", BigDecimal.valueOf(2232.013416));
+        hashMap.put("BMD", BigDecimal.valueOf(1.075211));
+        hashMap.put("BND", BigDecimal.valueOf(1.426958));
+        hashMap.put("BOB", BigDecimal.valueOf(7.4279));
+        hashMap.put("BRL", BigDecimal.valueOf(5.537476));
+        hashMap.put("BSD", BigDecimal.valueOf(1.074921));
+        hashMap.put("BTC", BigDecimal.valueOf(4.8344168e-05));
+        hashMap.put("BTN", BigDecimal.valueOf(88.941896));
+        hashMap.put("BWP", BigDecimal.valueOf(14.033277));
+        hashMap.put("BYN", BigDecimal.valueOf(2.713087));
+        hashMap.put("BYR", BigDecimal.valueOf(21074.134714));
+        hashMap.put("BZD", BigDecimal.valueOf(2.166733));
+        hashMap.put("CAD", BigDecimal.valueOf(1.434547));
+        hashMap.put("CDF", BigDecimal.valueOf(2198.806697));
+        hashMap.put("CHF", BigDecimal.valueOf(0.988076));
+        hashMap.put("CLF", BigDecimal.valueOf(0.030726));
+        hashMap.put("CLP", BigDecimal.valueOf(847.836129));
+        hashMap.put("CNY", BigDecimal.valueOf(7.335308));
+        hashMap.put("COP", BigDecimal.valueOf(5170.721738));
+        hashMap.put("CRC", BigDecimal.valueOf(614.8089));
+        hashMap.put("CUC", BigDecimal.valueOf(1.075211));
+        hashMap.put("CUP", BigDecimal.valueOf(28.49309));
+        hashMap.put("CVE", BigDecimal.valueOf(110.202577));
+        hashMap.put("CZK", BigDecimal.valueOf(23.705201));
+        hashMap.put("DJF", BigDecimal.valueOf(191.386251));
+        hashMap.put("DKK", BigDecimal.valueOf(7.4509));
+        hashMap.put("DOP", BigDecimal.valueOf(60.430985));
+        hashMap.put("DZD", BigDecimal.valueOf(146.788883));
+        hashMap.put("EGP", BigDecimal.valueOf(32.869844));
+        hashMap.put("ERN", BigDecimal.valueOf(16.128164));
+        hashMap.put("ETB", BigDecimal.valueOf(57.757495));
+        hashMap.put("EUR", BigDecimal.valueOf(1));
+        hashMap.put("FJD", BigDecimal.valueOf(2.344121));
+        hashMap.put("FKP", BigDecimal.valueOf(0.886125));
+        hashMap.put("GBP", BigDecimal.valueOf(0.882404));
+        hashMap.put("GEL", BigDecimal.valueOf(2.85471));
+        hashMap.put("GGP", BigDecimal.valueOf(0.886125));
+        hashMap.put("GHS", BigDecimal.valueOf(13.168208));
+        hashMap.put("GIP", BigDecimal.valueOf(0.886125));
+        hashMap.put("GMD", BigDecimal.valueOf(65.641043));
+        hashMap.put("GNF", BigDecimal.valueOf(9254.557825));
+        hashMap.put("GTQ", BigDecimal.valueOf(8.425394));
+        hashMap.put("GYD", BigDecimal.valueOf(226.82312));
+        hashMap.put("HKD", BigDecimal.valueOf(8.440347));
+        hashMap.put("HNL", BigDecimal.valueOf(26.500837));
+        hashMap.put("HRK", BigDecimal.valueOf(7.585392));
+        hashMap.put("HTG", BigDecimal.valueOf(162.324375));
+        hashMap.put("HUF", BigDecimal.valueOf(380.360139));
+        hashMap.put("IDR", BigDecimal.valueOf(16309.068565));
+        hashMap.put("ILS", BigDecimal.valueOf(3.780178));
+        hashMap.put("IMP", BigDecimal.valueOf(0.886125));
+        hashMap.put("INR", BigDecimal.valueOf(89.060852));
+        hashMap.put("IQD", BigDecimal.valueOf(1568.944243));
+        hashMap.put("IRR", BigDecimal.valueOf(45454.543031));
+        hashMap.put("ISK", BigDecimal.valueOf(153.281755));
+        hashMap.put("JEP", BigDecimal.valueOf(0.886125));
+        hashMap.put("JMD", BigDecimal.valueOf(165.701239));
+        hashMap.put("JOD", BigDecimal.valueOf(0.763612));
+        hashMap.put("JPY", BigDecimal.valueOf(142.721321));
+        hashMap.put("KES", BigDecimal.valueOf(134.452875));
+        hashMap.put("KGS", BigDecimal.valueOf(93.510238));
+        hashMap.put("KHR", BigDecimal.valueOf(4393.558631));
+        hashMap.put("KMF", BigDecimal.valueOf(496.208401));
+        hashMap.put("KPW", BigDecimal.valueOf(967.67681));
+        hashMap.put("KRW", BigDecimal.valueOf(1364.168483));
+        hashMap.put("KWD", BigDecimal.valueOf(0.328993));
+        hashMap.put("KYD", BigDecimal.valueOf(0.895863));
+        hashMap.put("KZT", BigDecimal.valueOf(483.22628));
+        hashMap.put("LAK", BigDecimal.valueOf(18109.747158));
+        hashMap.put("LBP", BigDecimal.valueOf(16135.010635));
+        hashMap.put("LKR", BigDecimal.valueOf(392.37736));
+        hashMap.put("LRD", BigDecimal.valueOf(169.076785));
+        hashMap.put("LSL", BigDecimal.valueOf(19.246247));
+        hashMap.put("LTL", BigDecimal.valueOf(3.174818));
+        hashMap.put("LVL", BigDecimal.valueOf(0.650384));
+        hashMap.put("LYD", BigDecimal.valueOf(5.166018));
+        hashMap.put("MAD", BigDecimal.valueOf(11.058228));
+        hashMap.put("MDL", BigDecimal.valueOf(20.116544));
+        hashMap.put("MGA", BigDecimal.valueOf(4643.659199));
+        hashMap.put("MKD", BigDecimal.valueOf(61.578401));
+        hashMap.put("MMK", BigDecimal.valueOf(2257.481436));
+        hashMap.put("MNT", BigDecimal.valueOf(3779.486244));
+        hashMap.put("MOP", BigDecimal.valueOf(8.691664));
+        hashMap.put("MRO", BigDecimal.valueOf(383.850126));
+        hashMap.put("MUR", BigDecimal.valueOf(49.29841));
+        hashMap.put("MVR", BigDecimal.valueOf(16.514872));
+        hashMap.put("MWK", BigDecimal.valueOf(1103.367791));
+        hashMap.put("MXN", BigDecimal.valueOf(19.941186));
+        hashMap.put("MYR", BigDecimal.valueOf(4.675558));
+        hashMap.put("MZN", BigDecimal.valueOf(67.84663));
+        hashMap.put("NAD", BigDecimal.valueOf(19.269555));
+        hashMap.put("NGN", BigDecimal.valueOf(495.199125));
+        hashMap.put("NIO", BigDecimal.valueOf(39.278847));
+        hashMap.put("NOK", BigDecimal.valueOf(10.896338));
+        hashMap.put("NPR", BigDecimal.valueOf(142.30964));
+        hashMap.put("NZD", BigDecimal.valueOf(1.696678));
+        hashMap.put("OMR", BigDecimal.valueOf(0.413915));
+        hashMap.put("PAB", BigDecimal.valueOf(1.074921));
+        hashMap.put("PEN", BigDecimal.valueOf(4.148063));
+        hashMap.put("PGK", BigDecimal.valueOf(3.787783));
+        hashMap.put("PHP", BigDecimal.valueOf(58.945757));
+        hashMap.put("PKR", BigDecimal.valueOf(287.295376));
+        hashMap.put("PLN", BigDecimal.valueOf(4.772098));
+        hashMap.put("PYG", BigDecimal.valueOf(7820.215787));
+        hashMap.put("QAR", BigDecimal.valueOf(3.914574));
+        hashMap.put("RON", BigDecimal.valueOf(4.901667));
+        hashMap.put("RSD", BigDecimal.valueOf(117.359214));
+        hashMap.put("RUB", BigDecimal.valueOf(78.953273));
+        hashMap.put("RWF", BigDecimal.valueOf(1166.706575));
+        hashMap.put("SAR", BigDecimal.valueOf(4.034532));
+        hashMap.put("SBD", BigDecimal.valueOf(8.828682));
+        hashMap.put("SCR", BigDecimal.valueOf(15.2644));
+        hashMap.put("SDG", BigDecimal.valueOf(628.461647));
+        hashMap.put("SEK", BigDecimal.valueOf(11.116068));
+        hashMap.put("SGD", BigDecimal.valueOf(1.427488));
+        hashMap.put("SHP", BigDecimal.valueOf(1.480989));
+        hashMap.put("SLE", BigDecimal.valueOf(21.354514));
+        hashMap.put("SLL", BigDecimal.valueOf(21208.536021));
+        hashMap.put("SOS", BigDecimal.valueOf(611.227965));
+        hashMap.put("SRD", BigDecimal.valueOf(34.783588));
+        hashMap.put("STD", BigDecimal.valueOf(22254.695922));
+        hashMap.put("SVC", BigDecimal.valueOf(9.405935));
+        hashMap.put("SYP", BigDecimal.valueOf(2700.931899));
+        hashMap.put("SZL", BigDecimal.valueOf(19.193264));
+        hashMap.put("THB", BigDecimal.valueOf(36.336217));
+        hashMap.put("TJS", BigDecimal.valueOf(11.206052));
+        hashMap.put("TMT", BigDecimal.valueOf(3.77399));
+        hashMap.put("TND", BigDecimal.valueOf(3.345518));
+        hashMap.put("TOP", BigDecimal.valueOf(2.504973));
+        hashMap.put("TRY", BigDecimal.valueOf(20.262221));
+        hashMap.put("TTD", BigDecimal.valueOf(7.298769));
+        hashMap.put("TWD", BigDecimal.valueOf(32.475243));
+        hashMap.put("TZS", BigDecimal.valueOf(2514.918825));
+        hashMap.put("UAH", BigDecimal.valueOf(39.503821));
+        hashMap.put("UGX", BigDecimal.valueOf(3937.579452));
+        hashMap.put("USD", BigDecimal.valueOf(1.075211));
+        hashMap.put("UYU", BigDecimal.valueOf(42.097482));
+        hashMap.put("UZS", BigDecimal.valueOf(12210.872541));
+        hashMap.put("VEF", BigDecimal.valueOf(2596129.390195));
+        hashMap.put("VES", BigDecimal.valueOf(25.986238));
+        hashMap.put("VND", BigDecimal.valueOf(25385.730643));
+        hashMap.put("VUV", BigDecimal.valueOf(127.113586));
+        hashMap.put("WST", BigDecimal.valueOf(2.897305));
+        hashMap.put("XAF", BigDecimal.valueOf(655.616119));
+        hashMap.put("XAG", BigDecimal.valueOf(0.049112));
+        hashMap.put("XAU", BigDecimal.valueOf(0.000579));
+        hashMap.put("XCD", BigDecimal.valueOf(2.905811));
+        hashMap.put("XDR", BigDecimal.valueOf(0.804016));
+        hashMap.put("XOF", BigDecimal.valueOf(655.60393));
+        hashMap.put("XPF", BigDecimal.valueOf(120.6931));
+        hashMap.put("YER", BigDecimal.valueOf(269.178664));
+        hashMap.put("ZAR", BigDecimal.valueOf(19.176429));
+        hashMap.put("ZMK", BigDecimal.valueOf(9678.186906));
+        hashMap.put("ZMW", BigDecimal.valueOf(20.794901));
+        hashMap.put("ZWL", BigDecimal.valueOf(346.217489));
+        return hashMap;
+    }
+
+}

@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class CreateUserRequest {
+public class UserRequest {
 
     @NotBlank(message = "{user.name.notBlank}")
     @Size(min = 5, max = 255, message = "{user.name.size}")
