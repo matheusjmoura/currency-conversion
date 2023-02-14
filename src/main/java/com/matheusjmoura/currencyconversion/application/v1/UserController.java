@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
+import java.util.Objects;
 
 @Slf4j
 @RestController
@@ -41,10 +42,12 @@ public class UserController {
             schema = @Schema(implementation = ErrorAttributes.class))})
     })
     public Mono<ResponseEntity<UserResponse>> create(@RequestBody @Valid CreateUserRequest request) {
-        log.info("Receiving request to create new user. Request body: {}", request);
+        log.info("Receiving request to create new user. Request: {}.", request);
 
         return userService.create(request)
-            .map(userResponse -> new ResponseEntity<>(userResponse, HttpStatus.CREATED));
+            .map(userResponse -> new ResponseEntity<>(userResponse, HttpStatus.CREATED))
+            .doOnSuccess(responseEntity -> log.info("User successfully created with ID {}.",
+                Objects.requireNonNull(responseEntity.getBody()).getId()));
     }
 
 }

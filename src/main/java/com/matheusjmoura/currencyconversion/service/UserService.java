@@ -26,14 +26,13 @@ public class UserService {
             .switchIfEmpty(Mono.error(() -> new UserAlreadyExistException(request.getName())))
             .flatMap(unused -> userRepository.save(User.from(request)))
             .map(UserResponse::from)
-            .doOnSuccess(userResponse -> log.info("User created successfully. Response body: {}.", userResponse))
-            .doOnError(throwable -> log.error("An error occurred while creating user. Request body: " + request, throwable));
+            .doOnError(throwable -> log.error("An error occurred while creating user. Request: " + request, throwable));
     }
 
     public Mono<User> getById(UUID userId) {
         return userRepository.findById(userId)
             .switchIfEmpty(Mono.error(() -> new UserNotFoundException(userId)))
-            .doOnError(throwable -> log.error("An error occurred while fetching user. User ID requested: " + userId, throwable));
+            .doOnError(throwable -> log.error("An error occurred while fetching user with ID " + userId, throwable));
     }
 
 }

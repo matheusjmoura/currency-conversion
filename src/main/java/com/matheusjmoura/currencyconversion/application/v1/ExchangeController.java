@@ -49,10 +49,11 @@ public class ExchangeController {
             schema = @Schema(implementation = ErrorAttributes.class))})
     })
     public Mono<ResponseEntity<ExchangeResponse>> exchange(@RequestBody @Valid ExchangeRequest exchangeRequest) {
-        log.info("Receiving request to exchange two currencies. Request: {}.", exchangeRequest);
+        log.info("Receiving request to make an exchange operation between two currencies. Request: {}.", exchangeRequest);
 
         return exchangeService.exchange(exchangeRequest)
-            .map(ResponseEntity::ok);
+            .map(ResponseEntity::ok)
+            .doOnSuccess(responseEntity -> log.info("Successful exchange operation. Response: {}.", responseEntity.getBody()));
     }
 
     @GetMapping("/user/{userId}")
@@ -71,11 +72,12 @@ public class ExchangeController {
         @PathVariable UUID userId,
         @ParameterObject Pageable pageable
     ) {
-        log.info("Receiving request to get exchange operations by user ID. User ID: {}.", userId);
+        log.info("Receiving request to get exchange operations by user with ID {}.", userId);
 
         return exchangeService.getAllByUserID(userId, pageable)
             .map(ApiPageResponse::from)
-            .map(ResponseEntity::ok);
+            .map(ResponseEntity::ok)
+            .doOnSuccess(responseEntity -> log.info("Exchange operations for user with ID {} successfully retrieved.", userId));
     }
 
 }

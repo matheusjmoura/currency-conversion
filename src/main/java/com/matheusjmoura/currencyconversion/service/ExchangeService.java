@@ -49,8 +49,8 @@ public class ExchangeService {
         return Mono.just(exchangeRequest)
             .filter(request -> Boolean.FALSE.equals(request.isSameCurrency()))
             .switchIfEmpty(Mono.error(() -> new IdenticalCurrencyExchangeException(exchangeRequest.getOriginCurrency())))
-            .doOnError(throwable -> log.error("Error exchanging two identical currencies. User ID: {} - Currency: {}",
-                exchangeRequest.getUserId(), exchangeRequest.getOriginCurrency()))
+            .doOnError(throwable -> log.error("Error exchanging two identical currencies. User ID: " + exchangeRequest.getUserId() +
+                " - Currency: " + exchangeRequest.getOriginCurrency(), throwable))
             .thenReturn(exchangeRequest);
     }
 
