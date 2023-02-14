@@ -1,5 +1,6 @@
 package com.matheusjmoura.currencyconversion.application.common;
 
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ public class ApiPageResponse<T> {
     private int pageNumber;
     @Schema(description = "Total amount of elements spanning all pages", example = "1")
     private long totalElements;
-    @Schema(description = "Current page content as List")
+    @ArraySchema(schema = @Schema(description = "Current page content as List"))
     private Collection<T> content = new ArrayList<>();
 
     public static <T> ApiPageResponse<T> from(Page<T> page) {
