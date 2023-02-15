@@ -59,7 +59,7 @@ Import the project as **gradle project** from your IDE and then, run it.
 
 # Using the API
 
-With project running on local, you can access swagger-ui from: <http:localhost:8080/swagger-ui.html/>
+With project running on local, you can access swagger-ui from: <http://localhost:8080/swagger-ui.html/>
 
 ![Swagger API Documentation - Home Page](images/swagger-home.png)
 
@@ -90,6 +90,14 @@ If is a successful currency exchange operation, you will get this Response:
 ### Exchange Operations
 
 After creating a user and having its id, you can make a currency exchange operation from **Exchange Operations** POST endpoint (*/api/v1/exchanges*).
+
+This project supports 170 currencies.
+
+```
+AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, BMD, BND, BOB, BRL, BSD, BTC, BTN, BWP, BYN, BYR, BZD, CAD, CDF, CHF, CLF, CLP, CNY, COP, CRC, CUC, CUP, CVE, CZK, DJF, DKK, DOP, DZD, EGP, ERN, ETB, EUR, FJD, FKP, GBP, GEL, GGP, GHS, GIP, GMD, GNF, GTQ, GYD, HKD, HNL, HRK, HTG, HUF, IDR, ILS, IMP, INR, IQD, IRR, ISK, JEP, JMD, JOD, JPY, KES, KGS, KHR, KMF, KPW, KRW, KWD, KYD, KZT, LAK, LBP, LKR, LRD, LSL, LTL, LVL, LYD, MAD, MDL, MGA, MKD, MMK, MNT, MOP, MRO, MUR, MVR, MWK, MXN, MYR, MZN, NAD, NGN, NIO, NOK, NPR, NZD, OMR, PAB, PEN, PGK, PHP, PKR, PLN, PYG, QAR, RON, RSD, RUB, RWF, SAR, SBD, SCR, SDG, SEK, SGD, SHP, SLE, SLL, SOS, SRD, STD, SVC, SYP, SZL, THB, TJS, TMT, TND, TOP, TRY, TTD, TWD, TZS, UAH, UGX, USD, UYU, UZS, VEF, VES, VND, VUV, WST, XAF, XAG, XAU, XCD, XDR, XOF, XPF, YER, ZAR, ZMK, ZMW, ZWL
+```
+
+All currencies were obtained from Exchange Rates Data API.
 
 ![Swagger API Documentation - Exchange](images/swagger-post-exchanges-api.png)
 
@@ -167,17 +175,7 @@ Dependencies used:
 - Swagger (OpenAPI Specification 3) for API documentation
 - Mockito, WireMock, JUnit 5 and AssertJ for making test cases
 
-## Currencies
-
-This project supports 170 currencies.
-
-```
-AED, AFN, ALL, AMD, ANG, AOA, ARS, AUD, AWG, AZN, BAM, BBD, BDT, BGN, BHD, BIF, BMD, BND, BOB, BRL, BSD, BTC, BTN, BWP, BYN, BYR, BZD, CAD, CDF, CHF, CLF, CLP, CNY, COP, CRC, CUC, CUP, CVE, CZK, DJF, DKK, DOP, DZD, EGP, ERN, ETB, EUR, FJD, FKP, GBP, GEL, GGP, GHS, GIP, GMD, GNF, GTQ, GYD, HKD, HNL, HRK, HTG, HUF, IDR, ILS, IMP, INR, IQD, IRR, ISK, JEP, JMD, JOD, JPY, KES, KGS, KHR, KMF, KPW, KRW, KWD, KYD, KZT, LAK, LBP, LKR, LRD, LSL, LTL, LVL, LYD, MAD, MDL, MGA, MKD, MMK, MNT, MOP, MRO, MUR, MVR, MWK, MXN, MYR, MZN, NAD, NGN, NIO, NOK, NPR, NZD, OMR, PAB, PEN, PGK, PHP, PKR, PLN, PYG, QAR, RON, RSD, RUB, RWF, SAR, SBD, SCR, SDG, SEK, SGD, SHP, SLE, SLL, SOS, SRD, STD, SVC, SYP, SZL, THB, TJS, TMT, TND, TOP, TRY, TTD, TWD, TZS, UAH, UGX, USD, UYU, UZS, VEF, VES, VND, VUV, WST, XAF, XAG, XAU, XCD, XDR, XOF, XPF, YER, ZAR, ZMK, ZMW, ZWL
-```
-
-All currencies were obtained from Exchange Rates Data API.
-
-# Problem with H2 Database console and Spring Webflux
+## Problem with H2 Database console and Spring Webflux
 
 H2 console is not only used for h2 database server browsing and database management. It can be used for all rdbms databases based on JDBC connection. H2 console application is a servlet. If the application not using servlet engine like webflux application, h2-console can not be used. Because of that restriction this autoconfiguration uses h2-console as an additional server.
 H2 console is based on JDBC drivers so the driver has to in the runtime classpath. While h2-console is running as a separate serve, the spring boot application can use any r2dbc drivers, not only h2 but also any other r2dbc database drivers without running a servlet engine.
