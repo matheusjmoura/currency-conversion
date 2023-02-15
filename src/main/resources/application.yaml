@@ -22,12 +22,6 @@ spring:
         trace: false
         web-allow-others: false
 
-logging:
-  level:
-    org:
-      springframework:
-        cache: TRACE
-
 exchange-rates:
   api:
     key: 7vJl4SuNYx2VqfhE89QhnuBnklXeP6qj
