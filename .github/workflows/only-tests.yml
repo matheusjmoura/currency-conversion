@@ -1,4 +1,4 @@
-name: Heroku Deployment [Production]
+name: Unit Tests Execution
 
 on:
   push:
