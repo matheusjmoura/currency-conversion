@@ -19,7 +19,7 @@ destinyValue = originValue * (\frac{destinyTaxRate}{originTaxRate})
 This approach was done because of free plan access from Exchange Rates Data API, that let you use only EUR as base currency.
 
 ### Caching the tax rates
-The project uses a free plan from Exchange Rates Data API. It returns real-time exchange rates data updated every 60 minutes, every 10 minutes, or every 60 seconds. However, this plan has a maximum limit of 250 requests per month. Therefore, the Exchange Rates Data API cannot be consumed on every new exchange operation, assuming there are more than 250 operations per month.
+The project uses a free plan from Exchange Rates Data API. It returns real-time exchange rates data updated every 60 minutes, every 10 minutes, or every 60 seconds. However, this plan has a maximum limit of 250 requests per month. Therefore, the Exchange Rates Data API cannot be consumed on every new exchange operation, assuming there will be more than 250 operations per month.
 
 ```math
 minimumRequestRange ≅ \frac{24 hours}{(\frac{250 requests}{30 days})}
